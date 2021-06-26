@@ -21,7 +21,6 @@
         {!! link_to_route('users.index', 'ユーザー一覧', [], ['class' => 'nav-link']) !!}
         {!! link_to_route('users.show', 'マイプロフィール', ['user' => Auth::id()]) !!}
         
-        
         @foreach ($wordbooks as $wordbook)
             <li class="media mb-3">
                 <div class="media-body">
@@ -41,7 +40,7 @@
                         @if (Auth::id() == $wordbook->user_id)
                             {{-- 学習ボタン --}}
                             <div class="btn btn-light btn-sm">
-                                {!! link_to_route('words.create', '学習へ', ['id' => $wordbook->id]) !!}
+                                {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id]) !!}
                             </div>
                             
                             {{-- 単語登録ボタン --}}
@@ -58,5 +57,6 @@
                 </div>
             </li>
         @endforeach
+        
 
 @endsection

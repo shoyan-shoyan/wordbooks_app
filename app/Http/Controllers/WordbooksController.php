@@ -39,8 +39,8 @@ class WordbooksController extends Controller
         ]);
 
         // 前のURLへリダイレクトさせる
-        //return back();
-        return view('word_registration');
+        return back();
+        //return view('word_registration');
     }
     
     public function destroy($id)

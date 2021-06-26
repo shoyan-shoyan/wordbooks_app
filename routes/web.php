@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('words', 'WordsController', ['only' => ['store']]);
     Route::group(['prefix' => 'workbooks/{id}'], function () {
         Route::resource('words', 'WordsController', ['only' => ['create']]);
+        Route::resource('learning', 'LearningsController', ['only' => ['index']]);
+        Route::get('next/{num}', 'LearningsController@next')->name('learning.next');
     });
 });
 
