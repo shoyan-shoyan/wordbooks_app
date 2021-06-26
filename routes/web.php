@@ -26,9 +26,11 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('wordbooks', 'WordbooksController', ['only' => ['store', 'destroy']]);
-    Route::resource('words', 'WordsController', ['only' => ['store']]);
+    Route::resource('words', 'WordsController', ['only' => ['store', 'destroy']]);
+    
     Route::group(['prefix' => 'workbooks/{id}'], function () {
         Route::resource('words', 'WordsController', ['only' => ['create']]);
+        // Route::post('words/delete/{word_id}', 'WordsController@destroy')->name('word.destroy');
         Route::resource('learning', 'LearningsController', ['only' => ['index']]);
         Route::get('next/{num}', 'LearningsController@next')->name('learning.next');
     });

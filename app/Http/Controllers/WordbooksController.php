@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use App\Word;
+
+//例外処理用
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class WordbooksController extends Controller
 {
@@ -39,15 +44,30 @@ class WordbooksController extends Controller
         ]);
 
         // 前のURLへリダイレクトさせる
-        return back();
-        //return view('word_registration');
+        //return back();
+        return redirect('/');
+        // $this->index();
     }
     
     public function destroy($id)
     {
         // idの値で投稿を検索して取得
         $wordbook = \App\Wordbook::findOrFail($id);
-
+        
+        // Wordモデルから紐づく単語を抽出する。見つからない場合は例外処理
+        try {
+            
+            $words = \App\Word::where('wordbook_id', $wordbook->id)->get();
+            
+            foreach($words as $word) {
+                if (\Auth::id() === $wordbook->user_id) {
+                    $word->delete();
+                }
+            }
+        }catch (ModelNotFoundException $e) {
+            dd($word = "test");
+        }
+        
         // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除
         if (\Auth::id() === $wordbook->user_id) {
             $wordbook->delete();

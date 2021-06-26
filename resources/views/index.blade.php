@@ -13,7 +13,7 @@
         </div>
         <div>
             <a href="/wordbook_registration">新規単語帳登録へ</a>
-            // <a href="/word_registration">単語登録へ</a>
+            {{-- <a href="/word_registration">単語登録へ</a> --}}
         </div>
         
         <p>ログイン中</p>
