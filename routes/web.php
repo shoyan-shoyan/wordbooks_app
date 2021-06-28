@@ -11,28 +11,38 @@
 |
 */
 
-Route::get('/', 'WordbooksController@index'); 
+Route::get('/', 'WordbooksController@index')->name('top'); 
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
-
+    
+    
 // 認証
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'users/{id}'], function () {
+        Route::post('follow', 'UserFollowController@store')->name('user.follow');
+        Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
+        Route::get('followings', 'UsersController@followings')->name('users.followings');
+        Route::get('followers', 'UsersController@followers')->name('users.followers');
+    });
+    
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('wordbooks', 'WordbooksController', ['only' => ['store', 'destroy']]);
     Route::resource('words', 'WordsController', ['only' => ['store', 'destroy']]);
+
     
     Route::group(['prefix' => 'workbooks/{id}'], function () {
         Route::resource('words', 'WordsController', ['only' => ['create']]);
         // Route::post('words/delete/{word_id}', 'WordsController@destroy')->name('word.destroy');
         Route::resource('learning', 'LearningsController', ['only' => ['index']]);
-        Route::get('next/{num}', 'LearningsController@next')->name('learning.next');
+        // Route::get('next/{num}', 'LearningsController@next')->name('learning.next');
+                Route::get('next', 'LearningsController@next')->name('learning.next');
     });
 });
 

@@ -9,16 +9,19 @@ use App\Wordbook;
 
 class LearningsController extends Controller
 {
-    public function index($id)
+    public function index(Request $request)
     {
-        $data = [];
         
 
-            $book = \App\Wordbook::find($id);
+            $book = \App\Wordbook::find($request->id);
     
             $words = $book->words()->orderBy('created_at', 'desc')->paginate(10);
             
+            $count = $words->count();
             
+            if($count === 0){
+                dd($test = "登録単語がありません。");
+            }
             
             //セッションに何問目、英語、日本語をループさせて全部入れる
             // key→何問目 value→"英語,日本語"
@@ -26,38 +29,65 @@ class LearningsController extends Controller
                 session([$key => $word->content .','. $word->answer ]);
             }
 
-        $num = 0;
-        // セッションから一つのデータを取得する
-        $value = session($num);
-        
-        // dd($value);
+        // 現在何問目か
+            // if (is_null($request->next_pos))
+            // {
+                // 指定が無ければ1問目とする
+                // $count -1 問目
+                $quizu_index = $count-1;
+            // }
+            // else
+            // {
+            //     $quizu_index = $request->next_pos;
+            // }
+            
+            // $next_pos = (int)$quizu_index + 1;
+            
 
-        // $data = $this->next();
-        $data = [
-            'value' => $value,
-        ];
+
+
+        // セッションから一つのデータを取得する
+        $mondai_string = session()->get($quizu_index);
+        
+        $mondai_array = explode(",", $mondai_string);
         //ビューに1問目を渡す
 
         // Wordビューでそれらを表示
-        return view('learning', $data)->with('id', $id)->with('num', $num);
+        return view('learning', [
+            'id' => $request->id,
+            'count' => $count,
+            'quizu_index' => $quizu_index,
+            'mondai' => $mondai_array[0],
+            'answer' => $mondai_array[1]
+        ]);
+        
 
     }
     
-    public function next($id, $num)
+    public function next(Request $request)
     {
-        // num 問目を加算
-        ++$num;
-        
-        // dd($key);
-        // セッションから一つのデータを取得する
-        $value = session($num);
+        // $quizu_index 問目を加算
+        $quizu_index = $request->quizu_index;
 
-            //  dd($value);
-        //ビューにn問目を渡す
-        $data = [
-            'value' => $value,
-        ];
+        --$quizu_index;
+
         
-        return view('learning', $data)->with('id', $id)->with('num', $num);
+        if($quizu_index >= 0){
+            
+            $mondai_string = session()->get($quizu_index);
+            $mondai_array = explode(",", $mondai_string);
+            
+            return view('learning', [
+                'id' => $request->id,
+                'quizu_index' => $quizu_index,
+                'count' => $request->count,
+                'mondai' => $mondai_array[0],
+                'answer' => $mondai_array[1]
+            ]);
+        }else{
+                dd($test = "問題がありません。");
+        }
+
+        
     }
 }

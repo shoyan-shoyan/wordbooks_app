@@ -19,8 +19,9 @@
         <p>ログイン中</p>
         {!! link_to_route('logout.get', 'ログアウト') !!}
         {!! link_to_route('users.index', 'ユーザー一覧', [], ['class' => 'nav-link']) !!}
-        {!! link_to_route('users.show', 'マイプロフィール', ['user' => Auth::id()]) !!}
-        
+        {{-- {!! link_to_route('users.show', 'マイプロフィール', ['user' => Auth::id()]) !!} --}}
+        {!! link_to_route('users.followings', 'マイプロフィール', ['id' => Auth::id()]) !!}
+                
         @foreach ($wordbooks as $wordbook)
             <li class="media mb-3">
                 <div class="media-body">
