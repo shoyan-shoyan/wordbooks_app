@@ -16,7 +16,11 @@
         <br>
         <label>問題ー{{ $mondai }}</label>
         <br>
-        <label>答えー{{ $answer }}</label>
+        <label>答えー</label>
+        <div>
+        <input type="button" id="answerButton" value="解答" onclick="OnButtonClick();">
+        <p id="answerText" style="visibility:hidden;">{{ $answer }}</p>
+        </div>
         <br>
         
 
@@ -29,4 +33,6 @@
     <div class="btn btn-light btn-sm">
         {!! link_to_route('top','戻る') !!}
     </div>      
+    
+    <script src="{{ asset('/js/answer.js') }}"></script>
 @endsection

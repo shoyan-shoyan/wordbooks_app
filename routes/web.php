@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('wordbooks', 'WordbooksController', ['only' => ['store', 'destroy']]);
     Route::resource('words', 'WordsController', ['only' => ['store', 'destroy']]);
-
+    Route::resource('all', 'BooksAllController',['only' => ['index']]);
     
     Route::group(['prefix' => 'workbooks/{id}'], function () {
         Route::resource('words', 'WordsController', ['only' => ['create']]);
@@ -53,6 +53,6 @@ Route::view('/wordbook_registration', 'wordbook_registration');
 
 
 //Route::view('/word_registration', 'word_registration');
-// Route::get('word/{id}', 'WordsController@index');
+Route::get('word/{id}', 'WordsController@index')->name('word.index');
 // Route::get('word', 'WordsController@create')->name('word.create');
 

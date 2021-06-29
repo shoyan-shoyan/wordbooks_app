@@ -8,9 +8,6 @@
         </div>
     </div>
 
-        <div>
-            ユーザ名:{{ Auth::user()->name }}
-        </div>
         
         
         @foreach ($words as $word)
@@ -18,7 +15,10 @@
                 <div class="media-body">
                     <div>
                         {{-- 投稿内容 --}}
+                        単語
                         <p class="mb-0">{!! nl2br(e($word->content)) !!}</p>
+                        解答
+                         <p class="mb-0">{!! nl2br(e($word->answer)) !!}</p>
                     </div>
                 </div>
             </li>

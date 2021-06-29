@@ -42,5 +42,8 @@
                     {!! Form::close() !!}
     @endforeach
         
+    {{-- 戻るボタン --}}
+    <div class="btn btn-light btn-sm">
+    {!! link_to_route('top','戻る') !!}
         
 @endsection

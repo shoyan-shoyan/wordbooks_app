@@ -15,7 +15,9 @@
             <a href="/wordbook_registration">新規単語帳登録へ</a>
             {{-- <a href="/word_registration">単語登録へ</a> --}}
         </div>
-        
+        <div>
+            <a href="/all">全単語帳一覧へ</a>
+        </div>
         <p>ログイン中</p>
         {!! link_to_route('logout.get', 'ログアウト') !!}
         {!! link_to_route('users.index', 'ユーザー一覧', [], ['class' => 'nav-link']) !!}
@@ -30,6 +32,8 @@
                         {!! link_to_route('users.show', $wordbook->user->name, ['user' => $wordbook->user->id]) !!}
                         <span class="text-muted">posted at {{ $wordbook->created_at }}</span>
                     </div>
+                    
+                    
                     <div>
                         {{-- 投稿内容 --}}
                         <p class="mb-0">
@@ -38,12 +42,12 @@
                         </p>
                     </div>
                     <div>
-                        @if (Auth::id() == $wordbook->user_id)
+                        
                             {{-- 学習ボタン --}}
                             <div class="btn btn-light btn-sm">
                                 {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id]) !!}
                             </div>
-                            
+                        @if (Auth::id() == $wordbook->user_id)   
                             {{-- 単語登録ボタン --}}
                             <div class="btn btn-light btn-sm">
                                 {!! link_to_route('words.create', '単語登録へ', ['id' => $wordbook->id]) !!}
