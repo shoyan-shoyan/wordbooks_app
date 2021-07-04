@@ -23,9 +23,13 @@
                             <p class="card-text small mt-0">posted at {{ $wordbook->created_at }}</p>
                                         
                                 <div class="btn-toolbar">
-        
-                                    {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
-                        
+                                    
+                                   
+                                    @if ($exists = \App\Word::where('wordbook_id', $wordbook->id)->exists())
+                                        {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
+                                    @endif
+                                    
+                                    
                                     @if (Auth::id() == $wordbook->user_id)   
                                         {{-- 単語登録ボタン --}}
                                         {!! link_to_route('words.create', '単語登録へ', ['id' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
