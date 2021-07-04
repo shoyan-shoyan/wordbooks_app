@@ -2,19 +2,13 @@
 
 @section('content')
     <div class="container">
-        <div class="center jumbotron m-2">
-            <div class="text-center">
-                <h1>単語帳アプリ（仮）</h1>
-                {{-- ユーザ登録ページへのリンク --}}
-                 {{-- {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!} --}}
-            </div>
+        <div class="text-center m-2">
+                <img src="{{ asset('/images/logo.png') }}" alt="ロゴ" class="img-fluid">
         </div>
         
         
         <div class="login card bg-light">
-            <div class="text-center card-header text-white bg-primary mb-3">
-                <h3>LOG IN</h3>
-            </div>
+
         
             <div class="card-body row">
                 <div class="col-sm-5 offset-sm-3">
@@ -30,7 +24,7 @@
                             {!! Form::password('password', ['class' => 'form-control','placeholder'=>'password']) !!}
                         </div>
         
-                        {!! Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) !!}
+                        {!! Form::submit('ログイン', ['class' => 'btn btn-primary btn-block']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>

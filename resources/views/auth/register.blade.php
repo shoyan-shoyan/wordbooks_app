@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card bg-light mt-5">
             <div class="text-center card-header text-white bg-primary mb-3">
-                <h1>Sign up</h1>
+                <h3>Sign up</h3>
             </div>
         
             <div class="card-body row">
@@ -31,7 +31,7 @@
                             {!! Form::password('password_confirmation', ['class' => 'form-control','placeholder'=>'Confirmation']) !!}
                         </div>
         
-                        {!! Form::submit('Sign up', ['class' => 'btn btn-primary btn-block']) !!}
+                        {!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}
                     {!! Form::close() !!}
                     </div>
                 </div>

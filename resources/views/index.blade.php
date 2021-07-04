@@ -10,12 +10,8 @@
 
         <div class="btn-toolbar m-1">
             <a href="/wordbook_registration" class="btn btn-primary mr-1">単語帳登録</a>
-            <a href="/all" class="btn btn-primary">単語帳一覧</a>
+            <a href="/all" class="btn btn-primary">すべての単語帳へ</a>
         </div>
-
-        
-        
-        
 
             @foreach ($wordbooks as $wordbook)
                 <li class="media mb-3">

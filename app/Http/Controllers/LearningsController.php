@@ -15,10 +15,13 @@ class LearningsController extends Controller
             $words = $book->words()->orderBy('created_at', 'desc')->paginate(10);
             $count = $words->count();
             
+            // 単語が登録されていない場合の条件分岐
             if($count === 0){
-                dd($test = "登録単語がありません。");
+                return view('learning', [
+                    'message' => '登録単語がありません。'
+                ]);
             }
-            
+                
             //セッションに何問目、英語、日本語をループさせて全部入れる
             // key→何問目 value→"英語,日本語"
             foreach($words as $key => $word) {
@@ -26,38 +29,23 @@ class LearningsController extends Controller
             }
 
         // 現在何問目か
-            // if (is_null($request->next_pos))
-            // {
-                // 指定が無ければ1問目とする
-                // $count -1 問目
                 $quizu_index = $count-1;
-            // }
-            // else
-            // {
-            //     $quizu_index = $request->next_pos;
-            // }
-            
-            // $next_pos = (int)$quizu_index + 1;
-            
-
-
 
         // セッションから一つのデータを取得する
         $mondai_string = session()->get($quizu_index);
         
         $mondai_array = explode(",", $mondai_string);
         //ビューに1問目を渡す
-
+        
         // Wordビューでそれらを表示
         return view('learning', [
             'id' => $request->id,
             'count' => $count,
             'quizu_index' => $quizu_index,
             'mondai' => $mondai_array[0],
-            'answer' => $mondai_array[1]
+            'answer' => $mondai_array[1],
+            //'message' => $message,
         ]);
-        
-
     }
     
     public function next(Request $request)
@@ -66,7 +54,6 @@ class LearningsController extends Controller
         $quizu_index = $request->quizu_index;
 
         --$quizu_index;
-
         
         if($quizu_index >= 0){
             
@@ -81,9 +68,10 @@ class LearningsController extends Controller
                 'answer' => $mondai_array[1]
             ]);
         }else{
-                dd($test = "問題がありません。");
+                // すべての単語が完了した場合のメッセージ
+                return view('learning', [
+                    'message' => 'すべての単語を学習しました。'
+                ]);
         }
-
-        
     }
 }
