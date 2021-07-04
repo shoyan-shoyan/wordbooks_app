@@ -3,36 +3,34 @@
 @section('content')
     
     <div class="container">
-        <div class="p-3 mb-2 bg-secondary text-white">
-            <h1 class="text-center">単語帳アプリ（仮）</h1>
+        
+        <div>
+            <label>{{ $count - $quizu_index }}問目</label>
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h1 class="text-center">{{ $mondai }}</h1>
+                </div>
+            </div>
+            <div class="my-2">
+                <input type="button" class="btn btn-primary btn-lg btn-block py-1" id="answerButton" value="解答" onclick="OnButtonClick();">
+                <h3 class="text-center border rounded  py-1" id="answerText" style="display:none;">{{ $answer }}</h3>
+            </div>
+            
+            {{-- 次へボタン --}}
+            <div>
+                 {!! link_to_route('learning.next','次へ',['id' => $id,  'count' => $count, 'quizu_index' => $quizu_index],['class'=>'btn btn-light btn-sm btn-block']) !!}
+            </div>
+        </div>
+        
+        {{-- 戻るボタン --}}
+        <div class="text-right">
+            <div class="btn btn-light btn-sm mt-2">
+                {!! link_to_route('top','TOPへ戻る') !!}
+            </div>
         </div>
     </div>
-
-        <div>
-            ユーザ名:{{ Auth::user()->name }}
-        </div>
-
-        <label>【{{ $count - $quizu_index }}問目】</label>
-        <br>
-        <label>問題ー{{ $mondai }}</label>
-        <br>
-        <label>答えー</label>
-        <div>
-        <input type="button" id="answerButton" value="解答" onclick="OnButtonClick();">
-        <p id="answerText" style="visibility:hidden;">{{ $answer }}</p>
-        </div>
-        <br>
-        
-
-    {{-- 次へボタン --}}
-    <div class="btn btn-light btn-sm">
-         {!! link_to_route('learning.next','次へ',['id' => $id,  'count' => $count, 'quizu_index' => $quizu_index] ) !!}
-    </div>        
-
-    {{-- 戻るボタン --}}
-    <div class="btn btn-light btn-sm">
-        {!! link_to_route('top','戻る') !!}
-    </div>      
-    
     <script src="{{ asset('/js/answer.js') }}"></script>
+
+
 @endsection
+

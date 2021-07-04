@@ -11,12 +11,8 @@ class LearningsController extends Controller
 {
     public function index(Request $request)
     {
-        
-
             $book = \App\Wordbook::find($request->id);
-    
             $words = $book->words()->orderBy('created_at', 'desc')->paginate(10);
-            
             $count = $words->count();
             
             if($count === 0){

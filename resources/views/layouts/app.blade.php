@@ -8,10 +8,10 @@
     </head>
 
     <body>
-
+    @if (Auth::check())
         {{-- ナビゲーションバー --}}
-        {{--　@include('commons.navbar')　--}}
-
+        @include('commons.navbar')
+    @endif
         <div class="container">
             {{-- エラーメッセージ --}}
             @include('commons.error_messages')

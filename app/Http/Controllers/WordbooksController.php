@@ -43,10 +43,8 @@ class WordbooksController extends Controller
             'bookname' => $request->bookname,
         ]);
 
-        // 前のURLへリダイレクトさせる
-        //return back();
+        // '/'へリダイレクトさせる
         return redirect('/');
-        // $this->index();
     }
     
     public function destroy($id)
