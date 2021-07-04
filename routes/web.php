@@ -39,20 +39,13 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::group(['prefix' => 'workbooks/{id}'], function () {
         Route::resource('words', 'WordsController', ['only' => ['create']]);
-        // Route::post('words/delete/{word_id}', 'WordsController@destroy')->name('word.destroy');
         Route::resource('learning', 'LearningsController', ['only' => ['index']]);
-        // Route::get('next/{num}', 'LearningsController@next')->name('learning.next');
                 Route::get('next', 'LearningsController@next')->name('learning.next');
     });
 });
 
 
-
-
 Route::view('/wordbook_registration', 'wordbook_registration');
-
-
-//Route::view('/word_registration', 'word_registration');
 Route::get('word/{id}', 'WordsController@index')->name('word.index');
-// Route::get('word', 'WordsController@create')->name('word.create');
+
 

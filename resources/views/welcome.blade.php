@@ -28,34 +28,6 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-                    
-                
-        
-            @if (Auth::check())
-                {{ Auth::user()->name }}
-                <p>ログイン中</p>
-                {!! link_to_route('logout.get', 'ログアウト') !!}
-                {!! link_to_route('users.index', 'ユーザー一覧', [], ['class' => 'nav-link']) !!}
-                {!! link_to_route('users.show', 'マイプロフィール', ['user' => Auth::id()]) !!}
-                
-                
-                @foreach ($wordbooks as $wordbook)
-                    <li class="media mb-3">
-                        <div class="media-body">
-                            <div>
-                                {{-- 投稿の所有者のユーザ詳細ページへのリンク --}}
-                                {!! link_to_route('users.show', $wordbook->user->name, ['user' => $wordbook->user->id]) !!}
-                                <span class="text-muted">posted at {{ $wordbook->created_at }}</span>
-                            </div>
-                            <div>
-                                {{-- 投稿内容 --}}
-                                <p class="mb-0">{!! nl2br(e($wordbook->bookname)) !!}</p>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-                
-            @endif
         </div>
 
     

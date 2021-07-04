@@ -63,7 +63,7 @@ class WordbooksController extends Controller
                 }
             }
         }catch (ModelNotFoundException $e) {
-            dd($word = "test");
+            return redirect('/');
         }
         
         // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除

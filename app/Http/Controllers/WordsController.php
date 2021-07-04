@@ -26,36 +26,53 @@ class WordsController extends Controller
     
     public function store(Request $request)
     {
-        // バリデーション
-        $request->validate([
-            'content' => 'required|max:255',
-            'answer' => 'required|max:255',
-        ]);
         
-        $word = new Word;
-        $word->wordbook_id = $request->wordbook_id;
-        $word->content = $request->content;
-        $word->answer = $request->answer;
-        $word->save();
-
-        // 前のURLへリダイレクトさせる
-        return back();
+        if (\Auth::check()) {
+            
+            // バリデーション
+            $request->validate([
+                'content' => 'required|max:255',
+                'answer' => 'required|max:255',
+            ]);
+            $book = $request->wordbook_id;
+            $user = \App\Wordbook::find($book)->user_id;
+            
+            if (\Auth::id() === $user) {
+                $word = new Word;
+                $word->wordbook_id = $request->wordbook_id;
+                $word->content = $request->content;
+                $word->answer = $request->answer;
+                $word->save();
+            }
+    
+            // 前のURLへリダイレクトさせる
+            return back();
+        }
+        return view('welcome');
     }
     
     public function create($id)
     {
         $data = [];
-
-            $book = \App\Wordbook::find($id);
-
-            $words = $book->words()->orderBy('created_at', 'desc')->paginate(10);
-
-            $data = [
-                'words' => $words,
-            ];
-
-        $wordbook_id = $id;
-        return view('word_registration', $data)->with('wordbook_id', $wordbook_id);
+        if (\Auth::check()) {
+                
+                $book = \App\Wordbook::find($id);
+                $user = $book->user_id;
+                
+                if (\Auth::id() === $user) {
+                    $words = $book->words()->orderBy('created_at', 'desc')->paginate(10);
+        
+                    $data = [
+                        'words' => $words,
+                    ];
+        
+                    $wordbook_id = $id;
+                    return view('word_registration', $data)->with('wordbook_id', $wordbook_id);
+                }
+                return view('welcome');
+                
+        }
+        return view('welcome');
     }
     
     public function destroy($id)
