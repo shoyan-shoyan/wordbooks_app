@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 //例外処理用
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+//作成したバリデーションを使用する
+use App\Http\Requests\ValidateRequest;
 
 class WordbooksController extends Controller
 {
@@ -31,12 +32,8 @@ class WordbooksController extends Controller
 
     }
     
-    public function store(Request $request)
+    public function store(ValidateRequest $request)
     {
-        // バリデーション
-        $request->validate([
-            'bookname' => 'required|max:50',
-        ]);
 
         // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
         $request->user()->wordbooks()->create([

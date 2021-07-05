@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Word;
+//作成したバリデーションを使用する
+use App\Http\Requests\ValidateRequest;
 
 class WordsController extends Controller
 {
@@ -24,16 +26,11 @@ class WordsController extends Controller
         return view('word', $data);
     }
     
-    public function store(Request $request)
+    public function store(ValidateRequest $request)
     {
         
         if (\Auth::check()) {
-            
-            // バリデーション
-            $request->validate([
-                'content' => 'required|max:255',
-                'answer' => 'required|max:255',
-            ]);
+
             $book = $request->wordbook_id;
             $user = \App\Wordbook::find($book)->user_id;
             
