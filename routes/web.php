@@ -46,6 +46,3 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::view('/wordbook_registration', 'wordbook_registration');
 Route::get('word/{id}', 'WordsController@index')->name('word.index');
-
-// Route::get('/', 'ValidateController@index');
-// Route::post('/', 'ValidateController@create');

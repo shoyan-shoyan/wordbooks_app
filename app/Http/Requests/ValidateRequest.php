@@ -13,16 +13,9 @@ class ValidateRequest extends FormRequest
      */
     public function authorize()
     {
-        // if ($this->path() === '/')
-        // {
-        //     //リクエストのパスが"/"のときだけ、このクラスで定義した
-        //     //バリデーションルールを適用する
+
             return true;
-        // }
-        // else
-        // {
-            // return false;
-        // }
+
     }
 
     /**
@@ -32,13 +25,7 @@ class ValidateRequest extends FormRequest
      */
     public function rules()
     {
-        // return [
-        //     'content' => 'required',
-        //     'answer' => 'required',
-        //     'bookname' => 'required',
-        //     // 'name'  => 'required',
-        // ];
-        
+
         // バリデーションルールをまとめる配列です。
         $rules = [];
 

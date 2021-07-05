@@ -24,7 +24,11 @@ class UsersController extends Controller
     {
         // idの値でユーザを検索して取得
         $user = User::findOrFail($id);
-
+        
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+        
+        
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
