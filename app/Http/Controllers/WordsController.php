@@ -66,7 +66,7 @@ class WordsController extends Controller
                     $wordbook_id = $id;
                     return view('word_registration', $data)->with('wordbook_id', $wordbook_id);
                 }
-                return view('welcome');
+                return redirect('/');
                 
         }
         return view('welcome');
