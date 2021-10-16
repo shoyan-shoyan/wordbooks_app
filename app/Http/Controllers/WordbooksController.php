@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Wordbook;
+use App\Tag;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 // use App\Word;
 
@@ -31,19 +34,80 @@ class WordbooksController extends Controller
         return view('welcome');
 
     }
+    public function create()
+    {
+        $allTagNames = Tag::all()->map(function($tag){
+            return['text' => $tag->name];
+        });
+
+        return view('wordbook_registration',[
+            'allTagNames' => $allTagNames,
+        ]);
+    }
     
     public function store(ValidateRequest $request)
     {
+        $wordbook = new Wordbook();
 
         // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
-        $request->user()->wordbooks()->create([
+        //タグの作成のため$wordbookへ代入
+        $wordbook = $request->user()->wordbooks()->create([
             'bookname' => $request->bookname,
         ]);
+
+        //タグの作成
+        $request->tags->each(function($tagName)use($wordbook){
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $wordbook->tags()->attach($tag);
+        });
 
         // '/'へリダイレクトさせる
         return redirect('/');
     }
     
+    public function edit($id)
+    {
+        $wordbook = Wordbook::with('tags')->findOrFail($id);
+        $tagNames = $wordbook->tags->map(function($tag){
+            return['text' => $tag->name ];
+        });
+
+        $allTagNames = Tag::all()->map(function($tag){
+            return['text' => $tag->name];
+        });
+
+        return view('wordbook_edit', [
+            'wordbook'=> $wordbook,
+            'tagNames'=> $tagNames,
+            'allTagNames' => $allTagNames,
+            ]);
+    }
+
+    public function update(ValidateRequest $request, $id)
+    {
+        if (\Auth::check()) {
+            $wordbook = Wordbook::find($id);
+            $user = \App\Wordbook::find($id)->user_id;
+
+            if (\Auth::id() === $user) {
+
+                $wordbook->bookname = $request->input('bookname');
+                $wordbook->save();
+
+                $wordbook->tags()->detach();
+                //タグの作成
+                $request->tags->each(function($tagName)use($wordbook){
+                    $tag = Tag::firstOrCreate(['name' => $tagName]);
+                    $wordbook->tags()->attach($tag);
+                });
+
+                return redirect('/');
+            } 
+        }
+        return view('welcome');
+
+    }
+
     public function destroy($id)
     {
         // idの値で投稿を検索して取得
@@ -70,5 +134,25 @@ class WordbooksController extends Controller
 
         // 前のURLへリダイレクトさせる
         return back();
+    }
+    public function like(Request $request, Wordbook $wordbook)
+    {
+        $wordbook->likes()->detach($request->user()->id);
+        $wordbook->likes()->attach($request->user()->id);
+
+        return [
+            'id' => $wordbook->id,
+            'countLikes' => $wordbook->count_likes,
+        ];
+    }
+
+    public function unlike(Request $request, Wordbook $wordbook)
+    {
+        $wordbook->likes()->detach($request->user()->id);
+
+        return [
+            'id' => $wordbook->id,
+            'countLikes' => $wordbook->count_likes,
+        ];
     }
 }

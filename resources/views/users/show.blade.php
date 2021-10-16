@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     <div class="row">
         <aside class="col-sm-4">
             {{-- ユーザ情報 --}}
@@ -9,6 +11,10 @@
         <div class="col-sm-8">
             {{-- タブ --}}
             @include('users.navtabs')
+            
+        @foreach ($wordbooks as $wordbook)
+            @include('wordbooks.card')
+        @endforeach
         </div>
         
     </div>

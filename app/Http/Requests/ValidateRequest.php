@@ -43,6 +43,9 @@ class ValidateRequest extends FormRequest
             $rules['bookname'] = 'required|max:50';
         }
 
+        if ($this->has('tags')) {
+            $rules['tags'] = 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u';
+        }
         return $rules;
         
     }
@@ -56,6 +59,17 @@ class ValidateRequest extends FormRequest
             'answer.max' => '255文字以内で入力してください。',
             'bookname.required' => '必須入力です。',
             'bookname.max' => '50文字以内で入力してください。',
+            'tags.regex' => 'タグ名にスペースと"/"は使えません。',
         ];
     }
+
+    public function passedValidation()
+    {
+        $this->tags = collect(json_decode($this->tags))
+            ->slice(0, 5)
+            ->map(function ($requestTag) {
+                return $requestTag->text;
+            });
+    }
+
 }

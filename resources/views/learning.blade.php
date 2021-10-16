@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="my-2">
-                    <input type="button" class="btn btn-primary btn-lg btn-block py-1" id="answerButton" value="解答" onclick="OnButtonClick();">
+                    <button type="button" class="btn btn-primary btn-lg btn-block py-1" id="answerButton" onclick="OnButtonClick();">解答</button>
                     <h3 class="text-center border rounded  py-1" id="answerText" style="display:none;">{{ $answer }}</h3>
                 </div>
                 

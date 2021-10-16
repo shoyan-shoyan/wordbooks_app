@@ -8,16 +8,26 @@ use App\Wordbook;
 
 class BooksAllController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // 検索キーワードを代入
+        $keyword = $request->input('keyword');
+
+        $query = Wordbook::query();
+        
+        
         $data = [];
         if (\Auth::check()) { // 認証済みの場合
-            
-            // $wordbooks = wordbooks()->orderBy('created_at', 'desc')->paginate(10);
-            $wordbooks = \App\Wordbook::orderBy('created_at', 'desc')->get();
+        
+            if (!empty($keyword)) {
+                $query->where('bookname', 'LIKE', "%$keyword%");
+            }
+        
+            $wordbooks = $query->orderBy('created_at', 'desc')->get();
 
             $data = [
                 'wordbooks' => $wordbooks,
+                'keyword' => $keyword,
             ];
         }
 
