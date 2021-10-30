@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use Intervention\Image\Facades\Image;
 
+use App\Services\CheckExtensionServices;
+use App\Services\FileUploadServices;
 class UsersController extends Controller
 {
     public function index()
@@ -30,6 +33,12 @@ class UsersController extends Controller
         // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
         
+        if(empty($user->img_name)){
+            $img_name = "techpit-match-icon.png";
+        } else {
+            $img_name = $user->img_name;
+        }
+
         // ユーザの投稿一覧を作成日時の降順で取得
         $wordbooks = $user->wordbooks()->orderBy('created_at', 'desc')->paginate(10);
         
@@ -37,9 +46,42 @@ class UsersController extends Controller
         return view('users.show', [
             'user' => $user,
             'wordbooks' => $wordbooks,
+            'img_name' => $img_name,
         ]);
     }
     
+    public function edit($id)
+    {
+        $user = User::findorFail($id);
+
+        return view('users.edit', compact('user')); 
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $user = User::findorFail($id);
+
+        if(!is_null($request['img_name'])){
+            $imageFile = $request['img_name'];
+
+            $list = FileUploadServices::fileUpload($imageFile);
+            list($extension, $fileNameToStore, $fileData) = $list;
+            
+            $data_url = CheckExtensionServices::checkExtension($fileData, $extension);
+            $image = Image::make($data_url);        
+            $image->resize(200,200)->save(storage_path() . '/app/public/images/' . $fileNameToStore );
+
+            $user->img_name = $fileNameToStore;
+        }
+        
+        $user->self_introduction = $request->self_introduction;
+
+        $user->save();
+
+        return redirect()->route('users.show',['user' => $id]);
+    }
+
     public function followings($id)
     {
         // idの値でユーザを検索して取得

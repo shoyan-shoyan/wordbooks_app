@@ -34,6 +34,24 @@ class WordbooksController extends Controller
         return view('welcome');
 
     }
+    public function show($id)
+    {
+        $wordbook = Wordbook::with('tags',"words")->findOrFail($id);
+        $tagNames = $wordbook->tags->map(function($tag){
+            return['text' => $tag->name ];
+        });
+
+        $allTagNames = Tag::all()->map(function($tag){
+            return['text' => $tag->name];
+        });
+
+        return view('wordbook_show', [
+            'wordbook'=> $wordbook,
+            'tagNames'=> $tagNames,
+            'allTagNames' => $allTagNames,
+            'words'=>$wordbook->words,
+            ]);
+    }
     public function create()
     {
         $allTagNames = Tag::all()->map(function($tag){
@@ -61,8 +79,11 @@ class WordbooksController extends Controller
             $wordbook->tags()->attach($tag);
         });
 
-        // '/'へリダイレクトさせる
-        return redirect('/');
+        //単語帳を登録したら単語登録画面へリダイレクトさせる
+        return redirect()->route('words.create',[
+            'id' => $wordbook->id,
+        ]);
+
     }
     
     public function edit($id)
@@ -133,7 +154,7 @@ class WordbooksController extends Controller
         }
 
         // 前のURLへリダイレクトさせる
-        return back();
+        return redirect('/');
     }
     public function like(Request $request, Wordbook $wordbook)
     {

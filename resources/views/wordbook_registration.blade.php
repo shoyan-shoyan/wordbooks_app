@@ -23,8 +23,9 @@
 
 
     {{-- 戻るボタン --}}
-    <div class="btn btn-light btn-sm">
-        {!! link_to_route('top','戻る') !!}
-    </div>
+        <div class="btn btn-light btn-sm">
+                <a href="{{ $url = url()->previous() }}" >戻る</a>
+        </div>
+
     </div>
 @endsection

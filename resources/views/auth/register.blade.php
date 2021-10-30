@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card bg-light mt-5">
             <div class="text-center card-header text-white bg-primary mb-3">
-                <h3>Sign up</h3>
+                <h3>ユーザー登録</h3>
             </div>
         
             <div class="card-body row">
@@ -36,8 +36,8 @@
                     </div>
                 </div>
         </div>
-            <div class="row">
-                <div class="col-6 offset-3 mt-3">
+            <div class="row offset-3 mt-3">
+                <div class="col-8">
                     <button type="button" class='btn btn-secondary btn-block' onclick="history.back()">戻る</button>
                 </div>
             </div>    

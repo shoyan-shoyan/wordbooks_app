@@ -13,18 +13,10 @@
                       @endif
 
                       
-                      @if (Auth::id() == $wordbook->user_id)   
-                          {{-- 単語登録ボタン --}}
-                          {!! link_to_route('words.create', '単語登録へ', ['id' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
+                    {{-- 単語帳詳細ボタン--}}
+                    {!! link_to_route('wordbooks.show', '詳細へ', ['wordbook' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
 
-                          {{-- 単語帳編集ボタン--}}
-                          {!! link_to_route('wordbooks.edit', '単語帳編集', ['wordbook' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
 
-                          {{-- 投稿削除ボタンのフォーム --}}
-                          {!! Form::open(['route' => ['wordbooks.destroy', $wordbook->id], 'method' => 'delete']) !!}
-                              {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                          {!! Form::close() !!}
-                      @endif
                 </div>
           </div>
           <!-- いいねアイコン表示 -->

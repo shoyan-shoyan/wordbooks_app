@@ -23,9 +23,12 @@
                             {{-- {!! Form::label('password', 'Password') !!} --}}
                             {!! Form::password('password', ['class' => 'form-control','placeholder'=>'password']) !!}
                         </div>
-        
+
                         {!! Form::submit('ログイン', ['class' => 'btn btn-primary btn-block']) !!}
                     {!! Form::close() !!}
+                    <div class="text-left">
+                        <a href="{{ route('password.request') }}" class="card-text">パスワードを忘れた方</a>
+                    </div>
                 </div>
             </div>
         </div>

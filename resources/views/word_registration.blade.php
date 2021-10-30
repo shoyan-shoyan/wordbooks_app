@@ -47,8 +47,19 @@
         </div>
     
         {{-- 戻るボタン --}}
-        <div class="btn btn-light btn-sm mt-2">
-            {!! link_to_route('top','TOPへ戻る') !!}
-        </div>
+        @if (
+            strpos($url = $url = url()->previous(), '/wordbooks/create') !== false 
+            or
+            strpos($url = $url = url()->previous(), '/words/create') !== false 
+        )
+             <div class="btn btn-light btn-sm">
+                {!! link_to_route('top','TOPへ戻る') !!}
+            </div>
+        @else
+            <div class="btn btn-light btn-sm">
+                <a href="{{ $url = url()->previous() }}" >戻る</a>
+            </div>
+        @endif
+
     </div>
 @endsection

@@ -37,8 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('followers', 'UsersController@followers')->name('users.followers');
     });
     
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('wordbooks', 'WordbooksController', ['only' => ['store', 'destroy','edit','update','create']]);
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit','update']]);
+    Route::resource('wordbooks', 'WordbooksController', ['only' => ['store', 'destroy','edit','update','create','show']]);
     Route::resource('words', 'WordsController', ['only' => ['store', 'destroy']]);
     Route::resource('all', 'BooksAllController',['only' => ['index']]);
     

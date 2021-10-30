@@ -8,6 +8,13 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
+
+//画像アップロードの拡張子チェック
+use App\Services\CheckExtensionServices;
+
+//画像ファイルのアップロード
+use App\Services\FileUploadServices; 
 
 class RegisterController extends Controller
 {
@@ -53,6 +60,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'img_name' => ['file', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2000'], 
+            'self_introduction' => ['string', 'max:255'], 
         ]);
     }
 
