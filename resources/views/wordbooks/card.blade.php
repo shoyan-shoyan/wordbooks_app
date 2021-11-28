@@ -1,6 +1,6 @@
 <ul class="list-group list-group-flush">
     <li class="list-group-item">
-        <div class="card bg-light">
+        <div class="card bg-white mb-3">
             <div class="card-body">
                 <h4 class="card-title"><i class="far fa-file-alt fa-fw"></i> {!! nl2br(e($wordbook->bookname)) !!}</h4>
                 <p class="card-text small my-0">作成者：{!! link_to_route('users.show', $wordbook->user->name, ['user' => $wordbook->user->id]) !!}</p>
@@ -9,12 +9,11 @@
 
                   <div class="btn-toolbar">
                       @if ($exists = \App\Word::where('wordbook_id', $wordbook->id)->exists())
-                          {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
+                          {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id],['class'=>'btn btn-dark btn-sm mr-1']) !!}
                       @endif
 
-                      
                     {{-- 単語帳詳細ボタン--}}
-                    {!! link_to_route('wordbooks.show', '詳細へ', ['wordbook' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
+                    {!! link_to_route('wordbooks.show', '詳細へ', ['wordbook' => $wordbook->id],['class'=>'btn btn-dark btn-sm mr-1']) !!}
 
 
                 </div>

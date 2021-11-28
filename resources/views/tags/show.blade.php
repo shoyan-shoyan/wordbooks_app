@@ -4,7 +4,7 @@
   <div class="container">
     <div class="card bg-light mb-3">
       <div class="card-body">
-        <h2 class="h4 card-title m-0">{{ $tag->hashtag }}</h2>
+        <h2 class="h1 text-center card-title m-0">{{ $tag->hashtag }}</h2>
         <div class="card-text text-right">
           {{ $tag->wordbooks->count() }}件
         </div>

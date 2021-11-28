@@ -1,7 +1,7 @@
 <div class="container">
     <ul class="list-group list-group-flush">
 
-            <div class="card bg-light">
+            <div class="card bg-white">
                 <div class="card-body">
                     <h4 class="card-title"><i class="far fa-file-alt fa-fw"></i> {!! nl2br(e($wordbook->bookname)) !!}</h4>
                     <p class="card-text small my-0">作成者：{!! link_to_route('users.show', $wordbook->user->name, ['user' => $wordbook->user->id]) !!}</p>
@@ -10,16 +10,16 @@
 
                     <div class="btn-toolbar">
                         @if ($exists = \App\Word::where('wordbook_id', $wordbook->id)->exists())
-                            {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
+                            {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id],['class'=>'btn btn-dark btn-sm mr-1']) !!}
                         @endif
 
                         
                         @if (Auth::id() == $wordbook->user_id)   
                             {{-- 単語登録ボタン --}}
-                            {!! link_to_route('words.create', '単語登録へ', ['id' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
+                            {!! link_to_route('words.create', '単語登録へ', ['id' => $wordbook->id],['class'=>'btn btn-dark btn-sm mr-1']) !!}
 
                             {{-- 単語帳編集ボタン--}}
-                            {!! link_to_route('wordbooks.edit', '単語帳編集', ['wordbook' => $wordbook->id],['class'=>'btn btn-primary btn-sm mr-1']) !!}
+                            {!! link_to_route('wordbooks.edit', '単語帳編集', ['wordbook' => $wordbook->id],['class'=>'btn btn-dark btn-sm mr-1']) !!}
 
                             {{-- 投稿削除ボタンのフォーム --}}
                             {{-- モーダル表示ボタン --}}
@@ -80,7 +80,7 @@
     </ul>
     <div class="m-3">
         <ul class="list-group info">
-            <li class="list-group-item list-group-item-primary">単語一覧</li>
+            <li class="list-group-item list-group-item-dark">単語一覧</li>
 
                 @foreach($wordbook->words as $word)
                     <li class="list-group-item">{{ $word->content }}</li>

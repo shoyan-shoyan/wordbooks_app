@@ -93,10 +93,17 @@ class UsersController extends Controller
         // ユーザのフォロー一覧を取得
         $followings = $user->followings()->paginate(10);
 
+        if(empty($user->img_name)){
+            $img_name = "techpit-match-icon.png";
+        } else {
+            $img_name = $user->img_name;
+        }
+
         // フォロー一覧ビューでそれらを表示
         return view('users.followings', [
             'user' => $user,
             'users' => $followings,
+            'img_name' => $img_name,
         ]);
     }
     
@@ -111,10 +118,17 @@ class UsersController extends Controller
         // ユーザのフォロワー一覧を取得
         $followers = $user->followers()->paginate(10);
 
+        if(empty($user->img_name)){
+            $img_name = "techpit-match-icon.png";
+        } else {
+            $img_name = $user->img_name;
+        }
+
         // フォロワー一覧ビューでそれらを表示
         return view('users.followers', [
             'user' => $user,
             'users' => $followers,
+            'img_name' => $img_name,
         ]);
     }
 }

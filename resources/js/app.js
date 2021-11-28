@@ -9,12 +9,14 @@ import './bootstrap'
 import Vue from 'vue'
 import WordbookLike from './components/WordbookLike'
 import WordbookTagsInput from './components/WordbookTagsInput'
+import ImagePreview from './components/ImagePreview'
 
 const app = new Vue({
   el: '#app',
   components: {
     WordbookLike,
     WordbookTagsInput,
+    ImagePreview,
   }
 })
 
