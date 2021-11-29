@@ -10,7 +10,7 @@
                 <div class="d-flex flex-row">
                     <div class="my-1">
                         @if(empty($user->img_name))
-                            <img src="/storage/images/techpit-match-icon.png" class="img-thumbnail" width="70" height="70">
+                            <img src="/storage/images/user_image.PNG" class="img-thumbnail" width="70" height="70">
                         @else 
                             <img src="/storage/images/{{$user->img_name}}" class="img-thumbnail" width="70" height="70">
                         @endif

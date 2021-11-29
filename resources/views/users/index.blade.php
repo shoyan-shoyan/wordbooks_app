@@ -7,6 +7,6 @@
 
         {{-- ユーザ一覧 --}}
         @include('users.users')
-        {!! link_to_route('top','TOPへ戻る', [], ['class' => 'btn btn-light btn-sm px-3']) !!}
+        {!! link_to_route('top','TOPへ戻る', [], ['class' => 'btn btn-light btn-sm px-3 mb-5']) !!}
 </div>
 @endsection

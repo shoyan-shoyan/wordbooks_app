@@ -34,7 +34,7 @@ class UsersController extends Controller
         $user->loadRelationshipCounts();
         
         if(empty($user->img_name)){
-            $img_name = "techpit-match-icon.png";
+            $img_name = "user_image.PNG";
         } else {
             $img_name = $user->img_name;
         }
@@ -94,7 +94,7 @@ class UsersController extends Controller
         $followings = $user->followings()->paginate(10);
 
         if(empty($user->img_name)){
-            $img_name = "techpit-match-icon.png";
+            $img_name = "user_image.PNG";
         } else {
             $img_name = $user->img_name;
         }
@@ -119,7 +119,7 @@ class UsersController extends Controller
         $followers = $user->followers()->paginate(10);
 
         if(empty($user->img_name)){
-            $img_name = "techpit-match-icon.png";
+            $img_name = "user_image.PNG";
         } else {
             $img_name = $user->img_name;
         }
