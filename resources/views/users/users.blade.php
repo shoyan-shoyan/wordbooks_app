@@ -9,7 +9,8 @@
                                 <!-- <img src="/storage/images/user_image.PNG" class="img-thumbnail" width="70" height="70"> -->
                                 <img src="{{ asset('/images/user_image.PNG') }}" class="img-thumbnail" width="70" height="70">
                             @else 
-                                <img src="/storage/images/{{$user->img_name}}" class="img-thumbnail" width="70" height="70">
+                                <!-- <img src="/storage/images/{{$user->img_name}}" class="img-thumbnail" width="70" height="70"> -->
+                                <img src="data:image/png;base64,<?= $user->img_name ?>" class="img-thumbnail" width="70" height="70">
                             @endif
                         </div>
                         <div class="ml-1">

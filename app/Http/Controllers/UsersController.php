@@ -34,10 +34,10 @@ class UsersController extends Controller
         $user->loadRelationshipCounts();
         
         if(empty($user->img_name)){
-            // $img_name = "user_image.PNG";
             $img_name = "/images/user_image.PNG";
         } else {
-            $img_name = "/storage/images/" . $user->img_name;
+            // $img_name = "/storage/images/" . $user->img_name;
+            $img_name = "data:image/png;base64," . $user->img_name;
         }
         // ユーザの投稿一覧を作成日時の降順で取得
         $wordbooks = $user->wordbooks()->orderBy('created_at', 'desc')->paginate(10);
@@ -69,10 +69,16 @@ class UsersController extends Controller
             list($extension, $fileNameToStore, $fileData) = $list;
             
             $data_url = CheckExtensionServices::checkExtension($fileData, $extension);
-            $image = Image::make($data_url);        
-            $image->resize(200,200)->save(storage_path() . '/app/public/images/' . $fileNameToStore );
+            $imagefile = Image::make($data_url);        
+            // $image->resize(200,200)->save(storage_path() . '/app/public/images/' . $fileNameToStore );
+            $imagefile->resize(200,200);
+            // $image = base64_encode($image);
+            $image = base64_encode($imagefile->encode('png'));
 
-            $user->img_name = $fileNameToStore;
+            // Model::insert(["img_name" => $image]);
+
+            // $user->img_name = $fileNameToStore;
+            $user->img_name = $image;
         }
         
         $user->self_introduction = $request->self_introduction;
@@ -94,9 +100,10 @@ class UsersController extends Controller
         $followings = $user->followings()->paginate(10);
 
         if(empty($user->img_name)){
-            $img_name = "user_image.PNG";
+            $img_name = "/images/user_image.PNG";
         } else {
-            $img_name = $user->img_name;
+            // $img_name = "/storage/images/" . $user->img_name;
+            $img_name = "data:image/png;base64," . $user->img_name;
         }
 
         // フォロー一覧ビューでそれらを表示
@@ -119,9 +126,10 @@ class UsersController extends Controller
         $followers = $user->followers()->paginate(10);
 
         if(empty($user->img_name)){
-            $img_name = "user_image.PNG";
+            $img_name = "/images/user_image.PNG";
         } else {
-            $img_name = $user->img_name;
+            // $img_name = "/storage/images/" . $user->img_name;
+            $img_name = "data:image/png;base64," . $user->img_name;
         }
 
         // フォロワー一覧ビューでそれらを表示
