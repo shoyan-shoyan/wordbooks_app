@@ -15,8 +15,9 @@ class FileUploadServices
 
     $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
-    $fileData = file_get_contents($imageFile->getRealPath());
-
+    // $fileData = file_get_contents($imageFile->getRealPath());
+    $fileData = base64_encode(file_get_contents($imageFile->getRealPath()));
+    dd($fileData);
     $list = [$extension, $fileNameToStore, $fileData];
 
     return $list;

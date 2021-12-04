@@ -4,7 +4,8 @@
     </div>
     <div class="card-body">
 
-        <img src="/storage/images/{{$img_name}}">
+        <!-- <img src="/storage/images/{{$img_name}}"> -->
+        <img src="{{$img_name}}">
         <!-- 自己紹介文の表示 -->
         <div>
             {{ $user -> self_introduction }}

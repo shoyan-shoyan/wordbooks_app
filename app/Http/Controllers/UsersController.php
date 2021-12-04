@@ -34,11 +34,11 @@ class UsersController extends Controller
         $user->loadRelationshipCounts();
         
         if(empty($user->img_name)){
-            $img_name = "user_image.PNG";
+            // $img_name = "user_image.PNG";
+            $img_name = "/images/user_image.PNG";
         } else {
-            $img_name = $user->img_name;
+            $img_name = "/storage/images/" . $user->img_name;
         }
-
         // ユーザの投稿一覧を作成日時の降順で取得
         $wordbooks = $user->wordbooks()->orderBy('created_at', 'desc')->paginate(10);
         
