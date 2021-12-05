@@ -64,6 +64,7 @@ class UsersController extends Controller
 
         if(!is_null($request['img_name'])){
             $imageFile = $request['img_name'];
+            
 
             $list = FileUploadServices::fileUpload($imageFile);
             list($extension, $fileNameToStore, $fileData) = $list;
@@ -76,8 +77,6 @@ class UsersController extends Controller
 
             // $image = base64_encode($image);
             // $image = base64_encode($imagefile->encode('png'));s
-
-            // Model::insert(["img_name" => $image]);
 
             // $user->img_name = $fileNameToStore;
             // dd($data_url);

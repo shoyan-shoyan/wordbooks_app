@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Intervention\Image\Facades\Image;
+
 class CheckExtensionServices
 {
 
