@@ -69,16 +69,20 @@ class UsersController extends Controller
             list($extension, $fileNameToStore, $fileData) = $list;
             
             $data_url = CheckExtensionServices::checkExtension($fileData, $extension);
-            $imagefile = Image::make($data_url);        
+            // $imagefile = Image::make($data_url);s        
             // $image->resize(200,200)->save(storage_path() . '/app/public/images/' . $fileNameToStore );
-            $imagefile->resize(200,200);
+            
+            // $imagefile->resize(200,200);s
+
             // $image = base64_encode($image);
-            $image = base64_encode($imagefile->encode('png'));
+            // $image = base64_encode($imagefile->encode('png'));s
 
             // Model::insert(["img_name" => $image]);
 
             // $user->img_name = $fileNameToStore;
-            $user->img_name = $image;
+            // dd($data_url);
+            // $user->img_name = $image; s
+            $user->img_name = $data_url;
         }
         
         $user->self_introduction = $request->self_introduction;
