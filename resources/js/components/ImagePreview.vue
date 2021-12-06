@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      プロフィール画像選択
+      <p>プロフィール画像選択 ※アップロードできる画像は1MB以下となります。</p>
         <div>
             <input type="file" name="img_name" ref="preview" v-on:change="show">
         </div>

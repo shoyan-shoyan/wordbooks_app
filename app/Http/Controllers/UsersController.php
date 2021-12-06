@@ -9,6 +9,8 @@ use Intervention\Image\Facades\Image;
 
 use App\Services\CheckExtensionServices;
 use App\Services\FileUploadServices;
+
+use App\Http\Requests\ValidateRequest;
 class UsersController extends Controller
 {
     public function index()
@@ -57,31 +59,37 @@ class UsersController extends Controller
         return view('users.edit', compact('user')); 
     }
 
-    public function update(Request $request, $id)
+    public function update(ValidateRequest $request, $id)
     {
 
         $user = User::findorFail($id);
 
         if(!is_null($request['img_name'])){
             $imageFile = $request['img_name'];
-            
+            $imgSize = filesize($imageFile);
 
-            $list = FileUploadServices::fileUpload($imageFile);
-            list($extension, $fileNameToStore, $fileData) = $list;
-            
-            $data_url = CheckExtensionServices::checkExtension($fileData, $extension);
-            // $imagefile = Image::make($data_url);s        
-            // $image->resize(200,200)->save(storage_path() . '/app/public/images/' . $fileNameToStore );
-            
-            // $imagefile->resize(200,200);s
+            if($imgSize < 1100000){
 
-            // $image = base64_encode($image);
-            // $image = base64_encode($imagefile->encode('png'));s
+                $list = FileUploadServices::fileUpload($imageFile);
+                // list($extension, $fileNameToStore, $fileData) = $list;
+                list($extension, $fileData) = $list;
 
-            // $user->img_name = $fileNameToStore;
-            // dd($data_url);
-            // $user->img_name = $image; s
-            $user->img_name = $data_url;
+                $data_url = CheckExtensionServices::checkExtension($fileData, $extension);
+                // $imagefile = Image::make($data_url);s        
+                // $image->resize(200,200)->save(storage_path() . '/app/public/images/' . $fileNameToStore );
+                
+                // $imagefile->resize(200,200);s
+
+                // $image = base64_encode($image);
+                // $image = base64_encode($imagefile->encode('png'));s
+
+                // $user->img_name = $fileNameToStore;
+                // dd($data_url);
+                // $user->img_name = $image; s
+                $user->img_name = $data_url;
+
+            }
+            
         }
         
         $user->self_introduction = $request->self_introduction;

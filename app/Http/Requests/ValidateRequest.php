@@ -46,6 +46,10 @@ class ValidateRequest extends FormRequest
         if ($this->has('tags')) {
             $rules['tags'] = 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u';
         }
+        if ($this->has('img_name')) {
+            $rules['img_name'] = 'file|image|mimes:jpeg,png,jpg|max:1100';
+        }
+
         return $rules;
         
     }
@@ -60,6 +64,7 @@ class ValidateRequest extends FormRequest
             'bookname.required' => '必須入力です。',
             'bookname.max' => '50文字以内で入力してください。',
             'tags.regex' => 'タグ名にスペースと"/"は使えません。',
+            'img_name.max' => 'ファイルサイズが1MBを超えています。',
         ];
     }
 
