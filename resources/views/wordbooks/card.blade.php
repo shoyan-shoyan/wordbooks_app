@@ -9,7 +9,7 @@
 
                   <div class="btn-toolbar">
                       @if ($exists = \App\Word::where('wordbook_id', $wordbook->id)->exists())
-                          {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id],['class'=>'btn btn-dark btn-sm mr-1']) !!}
+                          {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id, 'question' => 'fix'],['class'=>'btn btn-dark btn-sm mr-1']) !!}
                       @endif
 
                     {{-- 単語帳詳細ボタン--}}

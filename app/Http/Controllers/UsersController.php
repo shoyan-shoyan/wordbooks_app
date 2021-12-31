@@ -66,26 +66,16 @@ class UsersController extends Controller
 
         if(!is_null($request['img_name'])){
             $imageFile = $request['img_name'];
+            
+            // 画像ファイルのサイズ確認
             $imgSize = filesize($imageFile);
 
             if($imgSize < 1100000){
 
                 $list = FileUploadServices::fileUpload($imageFile);
-                // list($extension, $fileNameToStore, $fileData) = $list;
                 list($extension, $fileData) = $list;
 
                 $data_url = CheckExtensionServices::checkExtension($fileData, $extension);
-                // $imagefile = Image::make($data_url);s        
-                // $image->resize(200,200)->save(storage_path() . '/app/public/images/' . $fileNameToStore );
-                
-                // $imagefile->resize(200,200);s
-
-                // $image = base64_encode($image);
-                // $image = base64_encode($imagefile->encode('png'));s
-
-                // $user->img_name = $fileNameToStore;
-                // dd($data_url);
-                // $user->img_name = $image; s
                 $user->img_name = $data_url;
 
             }

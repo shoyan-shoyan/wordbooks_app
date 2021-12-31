@@ -14,12 +14,19 @@ class LearningsController extends Controller
             //データベースに指定の単語帳が存在するかチェック
             $exists = \App\Wordbook::where('id', $request->id)->exists();
             
-            
+            // dd($request->question);
             if($exists) {
                     
                 
                 $book = \App\Wordbook::find($request->id);
-                $words = $book->words()->orderBy('created_at', 'desc')->paginate(10);
+
+                if($request->question === 'fix'){
+                    // 順番通りに出題
+                    $words = $book->words()->orderBy('created_at', 'desc')->paginate(10);
+                }else{
+                    // ランダムで出題
+                    $words = $book->words()->inRandomOrder()->get();
+                }
                 $count = $words->count();
                 
                 // 単語が登録されていない場合の条件分岐
@@ -28,13 +35,15 @@ class LearningsController extends Controller
                         'message' => '登録単語がありません。'
                     ]);
                 }
-                    
+
+                $temp_array = array();
+
                 //セッションに何問目、英語、日本語をループさせて全部入れる
                 // key→何問目 value→"英語,日本語"
                 foreach($words as $key => $word) {
                     session([$key => $word->content .','. $word->answer ]);
+                    
                 }
-    
                 // 現在何問目か
                         $quizu_index = $count-1;
         
@@ -80,7 +89,8 @@ class LearningsController extends Controller
         }else{
                 // すべての単語が完了した場合のメッセージ
                 return view('learning', [
-                    'message' => 'すべての単語を学習しました。'
+                    'message' => 'すべての単語を学習しました。',
+                    'id' => $request->id,
                 ]);
         }
     }

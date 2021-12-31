@@ -22,18 +22,19 @@
                     <div>
                         {!! link_to_route('learning.next','次へ',['id' => $id,  'count' => $count, 'quizu_index' => $quizu_index],['class'=>'btn btn-outline-dark btn-sm ']) !!}
                     </div>
-
-                
-                    {{-- 戻るボタン --}}
-                        <div>
-                            {!! link_to_route('top','TOPへ戻る',[],['class'=>'btn btn-light btn-sm ']) !!}
-                        </div>
+                    {{-- ランダム出題ボタン --}}
+                    <div>
+                        {!! link_to_route('learning.index', 'ランダムで出題', ['id' => $id, 'question' => 'rand'],['class'=>'btn btn-outline-dark btn-sm']) !!}
+                         {{-- 戻るボタン --}}
+                        {!! link_to_route('top','TOPへ戻る',[],['class'=>'btn btn-light btn-sm ']) !!}
+                    </div>
                 </div>
             </div>
         @else
             <div>
                 <h5>{{ $message }}</h5>
                 <div>
+                        {!! link_to_route('learning.index', '最初から学習', ['id' => $id],['class'=>'btn btn-dark btn-sm mr-1']) !!}
                         {!! link_to_route('top','TOPへ戻る',[],['class'=>'btn btn-light btn-sm ']) !!}
                 </div>
             </div>
