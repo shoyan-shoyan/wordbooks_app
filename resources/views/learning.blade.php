@@ -42,7 +42,7 @@
             </div>
         @endif
     </div>
-    <script src="{{ asset('/js/answer.js') }}"></script>
+
 
 
 @endsection
