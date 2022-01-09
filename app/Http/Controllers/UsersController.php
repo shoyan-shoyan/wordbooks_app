@@ -13,16 +13,30 @@ use App\Services\FileUploadServices;
 use App\Http\Requests\ValidateRequest;
 class UsersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // ユーザ一覧をidの降順で取得
-        $users = User::orderBy('id', 'desc')->paginate(10);
+        // 検索キーワードを代入
+        $keyword = $request->input('keyword');
 
+        $query = User::query();
+
+        $data = [];
+        if (\Auth::check()) { // 認証済みの場合
+        
+            if (!empty($keyword)) {
+                $query->where('name', 'LIKE', "%$keyword%");
+            }
+        
+            $users = $query->orderBy('id', 'desc')->paginate(10);
+
+            $data = [
+                'users' => $users,
+                'keyword' => $keyword,
+            ];
+        }
         
         // ユーザ一覧ビューでそれを表示
-        return view('users.index', [
-            'users' => $users,
-        ]);
+        return view('users.index', $data);
     }
      
      
@@ -56,7 +70,7 @@ class UsersController extends Controller
     {
         $user = User::findorFail($id);
         if (\Auth::id() == $id) {
-        return view('users.edit', compact('user')); 
+            return view('users.edit', compact('user')); 
         }
         return view('welcome');
     }

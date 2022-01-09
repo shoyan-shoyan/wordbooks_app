@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class WordbooksTableSeeder extends Seeder
+class TagTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,15 +11,16 @@ class WordbooksTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('wordbooks')->insert([
+        DB::table('tags')->insert([
             [
             'id' => 1,
-            'user_id' => 2,
-            'bookname' => '英単語(果物) 和 ー> 英',
+            'name' => '英語',
             ],[
             'id' => 2,
-            'user_id' => 2,
-            'bookname' => '簿記用語(3級)',
+            'name' => '英単語',
+            ],[
+            'id' => 3,
+            'name' => '簿記',
             ]
         ]);
     }
