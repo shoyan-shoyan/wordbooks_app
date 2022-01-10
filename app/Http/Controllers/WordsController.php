@@ -41,10 +41,13 @@ class WordsController extends Controller
                 $word->answer = $request->answer;
                 $word->save();
             }
-    
+            // CSRFトークンを再生成して、二重送信対策
+            $request->session()->regenerateToken();
+
             // 前のURLへリダイレクトさせる
             return back();
         }
+
         return view('welcome');
     }
     

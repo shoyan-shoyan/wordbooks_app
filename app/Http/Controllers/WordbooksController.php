@@ -79,6 +79,9 @@ class WordbooksController extends Controller
             $wordbook->tags()->attach($tag);
         });
 
+        // CSRFトークンを再生成して、二重送信対策
+        $request->session()->regenerateToken();
+
         //単語帳を登録したら単語登録画面へリダイレクトさせる
         return redirect()->route('words.create',[
             'id' => $wordbook->id,

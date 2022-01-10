@@ -36,7 +36,7 @@
                                                 <label>単語帳を削除しますか？</label>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">閉じる</button>
+                                                <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">閉じる</button>
                                                 <!-- <button type="button" class="btn btn-danger">削除</button> -->
                                                 {!! Form::open(['route' => ['wordbooks.destroy', $wordbook->id], 'method' => 'delete']) !!}
                                                     {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
