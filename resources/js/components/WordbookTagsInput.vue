@@ -26,7 +26,7 @@ export default {
   props: {
     initialTags: {
       type: Array,
-      default: [],
+      default: () => [],
     },
     autocompleteItems: {
       type: Array,
