@@ -12,6 +12,7 @@
              @include('users.navtabs')
             {{-- ユーザ一覧 --}}
             @include('users.users')
+            {{ $users->links() }}
         </div>
     </div>
 @endsection

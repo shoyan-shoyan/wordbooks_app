@@ -18,5 +18,7 @@
         @foreach ($wordbooks as $wordbook)
             @include('wordbooks.card')
         @endforeach
+
+        {{ $wordbooks->links() }}
     </div>
 @endsection

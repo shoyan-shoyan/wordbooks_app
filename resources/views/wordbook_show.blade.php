@@ -11,4 +11,5 @@
             <a class="text-dark" href="{{ $url = url()->previous() }}" >戻る</a>
         </div>
     </div>
+    
 @endsection

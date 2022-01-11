@@ -23,7 +23,7 @@ class BooksAllController extends Controller
                 $query->where('bookname', 'LIKE', "%$keyword%");
             }
         
-            $wordbooks = $query->orderBy('created_at', 'desc')->get();
+            $wordbooks = $query->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'wordbooks' => $wordbooks,

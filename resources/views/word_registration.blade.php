@@ -46,9 +46,9 @@
             {!! Form::close() !!}
                             
             @endforeach
-            
         </div>
-    
+        {{ $words->links() }}
+
         {{-- 戻るボタン --}}
         @if (
             strpos($url = $url = url()->previous(), '/wordbooks/create') !== false 

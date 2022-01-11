@@ -21,6 +21,7 @@
             </li>
         </div>
         @endforeach
+        
         {{-- 戻るボタン --}}
         <div>
             {!! link_to(URL::previous(), '戻る',[],['class'=>'btn btn-light btn-sm ']) !!}

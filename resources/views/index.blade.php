@@ -36,5 +36,7 @@
                     @include('wordbooks.card')
                 @endforeach
 
+                {{ $wordbooks->links() }}
+
     </div>
 @endsection
