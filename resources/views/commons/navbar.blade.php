@@ -16,6 +16,7 @@
 						<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
 							<a class="dropdown-item" href="{{ route('users.index') }}">ユーザ一覧</a>
 							<a class="dropdown-item" href="{{ route('users.show', ['user' => Auth::id()]) }}">マイプロフィール</a>
+							<a class="dropdown-item" href="{{ route('wordbooks.favorite') }}">お気に入り</a>
 							<a class="dropdown-item" href="{{ route('logout.get') }}">ログアウト</a>
  		       </div>
 				</div>

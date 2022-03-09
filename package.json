@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "bootstrap": "^5.1.1"
+        "bootstrap": "^5.1.1",
+        "hooper": "^0.3.4"
     }
 }

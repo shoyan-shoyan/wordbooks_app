@@ -118,4 +118,8 @@ class User extends Authenticatable
         return Wordbook::whereIn('user_id', $userIds);
     }
     
+    public function user_likes()
+    {
+        return $this->belongsToMany('App\Wordbook', 'likes')->withTimestamps();
+    }
 }

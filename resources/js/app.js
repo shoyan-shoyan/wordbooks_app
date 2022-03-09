@@ -10,6 +10,7 @@ import Vue from 'vue'
 import WordbookLike from './components/WordbookLike'
 import WordbookTagsInput from './components/WordbookTagsInput'
 import ImagePreview from './components/ImagePreview'
+import Slider from './components/Slider'
 
 const app = new Vue({
   el: '#app',
@@ -17,6 +18,7 @@ const app = new Vue({
     WordbookLike,
     WordbookTagsInput,
     ImagePreview,
+    Slider,
   }
 })
 

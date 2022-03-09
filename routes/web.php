@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('words', 'WordsController', ['only' => ['store']])->middleware('throttle:20, 1');
     Route::resource('words', 'WordsController', ['only' => ['destroy']]);
     Route::resource('all', 'BooksAllController',['only' => ['index']]);
+    Route::get('favorite', 'WordbooksController@favorite')->name('wordbooks.favorite');
     
     Route::group(['prefix' => 'workbooks/{id}'], function () {
         Route::resource('words', 'WordsController', ['only' => ['create']]);

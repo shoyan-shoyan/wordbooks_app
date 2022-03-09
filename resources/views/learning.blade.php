@@ -11,11 +11,18 @@
                         <h1 class="text-center">{{ $mondai }}</h1>
                     </div>
                 </div>
-                <div class="my-2">
+                <!-- <div class="my-2">
                     <button type="button" class="btn btn-dark btn-lg btn-block py-1" id="answerButton" onclick="OnButtonClick();">解答</button>
                     <h3 class="text-center border rounded  py-1" id="answerText" style="display:none;">{{ $answer }}</h3>
-                </div>
+                </div> -->
                 
+                <div class="my-2">
+                    <slider 
+                        v-bind:answer-text='@json( $answer )'
+                        next-quiz="{{ route('learning.next', ['id' => $id,  'count' => $count, 'quizu_index' => $quizu_index]) }}"       
+                        >
+                    </slider>
+                </div>
                 {{-- 次へボタン --}}
 
                 <div class="row d-flex justify-content-between">

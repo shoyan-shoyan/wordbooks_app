@@ -8,9 +8,16 @@
                 <p class="card-text small mt-0">単語数： {{ $count = \App\Word::where('wordbook_id', $wordbook->id)->count() }}</p>
 
                   <div class="btn-toolbar">
-                      @if ($exists = \App\Word::where('wordbook_id', $wordbook->id)->exists())
-                          {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id, 'question' => 'fix'],['class'=>'btn btn-dark btn-sm mr-1']) !!}
-                      @endif
+                    <!-- ユーザが作成した単語帳, もしくはフォロー対象のみ学習ボタンを表示 -->
+                    @if (
+                        $wordbook->user_id == Auth::user()->id 
+                        or
+                        DB::table('user_follow')->where('user_id', Auth::user()->id)->where('follow_id', $wordbook->user_id)->exists()
+                    )
+                        @if ($exists = \App\Word::where('wordbook_id', $wordbook->id)->exists())
+                            {!! link_to_route('learning.index', '学習へ', ['id' => $wordbook->id, 'question' => 'fix'],['class'=>'btn btn-dark btn-sm mr-1']) !!}
+                        @endif
+                    @endif
 
                     {{-- 単語帳詳細ボタン--}}
                     {!! link_to_route('wordbooks.show', '詳細へ', ['wordbook' => $wordbook->id],['class'=>'btn btn-dark btn-sm mr-1']) !!}

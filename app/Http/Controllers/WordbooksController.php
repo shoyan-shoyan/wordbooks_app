@@ -179,4 +179,15 @@ class WordbooksController extends Controller
             'countLikes' => $wordbook->count_likes,
         ];
     }
+
+    public function favorite(Request $request, Wordbook $wordbook)
+    {
+        $user = \Auth::user();
+        $wordbooks = $user->user_likes()->paginate(10);
+
+        $data = [
+            'wordbooks' => $wordbooks,
+        ];
+        return view('favorite', $data);
+    }
 }
