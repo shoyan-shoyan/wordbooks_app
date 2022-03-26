@@ -1,38 +1,31 @@
 @extends('layouts.app')
-
-
 @section('content')
-  <div class="container">
-    <div class="row">
-      <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
-        <h1 class="text-center"><a class="text-dark" href="/">新しいパスワードを設定</a></h1>
-        <div class="card mt-3">
-          <div class="card-body text-center">
+  <div class="d-flex align-items-center passreset bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <h2 class="mb-4 text-center">新しいパスワードを設定</h2>
+        <div class="text-center col-sm-6 offset-sm-3">
 
+          <form method="POST" action="{{ route('password.update') }}">
+            @csrf
 
-            <div class="card-text">
-              <form method="POST" action="{{ route('password.update') }}">
-                @csrf
+            <input type="hidden" name="email" value="{{ $email }}">
+            <input type="hidden" name="token" value="{{ $token }}">
 
-                <input type="hidden" name="email" value="{{ $email }}">
-                <input type="hidden" name="token" value="{{ $token }}">
-
-                <div class="md-form">
-                  <label for="password">新しいパスワード</label>
-                  <input class="form-control" type="password" id="password" name="password" required>
-                </div>
-
-                <div class="md-form">
-                  <label for="password_confirmation">新しいパスワード(再入力)</label>
-                  <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" required>
-                </div>
-
-                <button class="btn btn-dark btn-block btn-sm" type="submit">送信</button>
-
-              </form>
-
+            <div class="md-form mb-2">
+              <label for="password">新しいパスワード</label>
+              <input class="form-control" type="password" id="password" name="password" required>
             </div>
-          </div>
+
+            <div class="md-form mb-2">
+              <label for="password_confirmation">新しいパスワード(再入力)</label>
+              <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" required>
+            </div>
+            <div>
+              <button class="btn btn-dark btn-xl" type="submit">送信</button> 
+            </div>
+          </form>
+
         </div>
       </div>
     </div>
