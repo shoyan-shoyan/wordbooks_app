@@ -71,7 +71,7 @@ class ValidateRequest extends FormRequest
     public function passedValidation()
     {
         $this->tags = collect(json_decode($this->tags))
-            ->slice(0, 5)
+            ->slice(0, 3)
             ->map(function ($requestTag) {
                 return $requestTag->text;
             });
