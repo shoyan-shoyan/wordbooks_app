@@ -8,8 +8,10 @@
     @slide="slide"
     :wheelControl = "false"
   >
-    <slide class="hooper-slides__slide text-center btn-dark btn-lg btn-block py-1" id="answerButton">
+    <slide class="hooper-slides__slide text-center btn-lg btn-block py-1" id="answerButton">
+      <h3 >
         解答 (左へスライド)
+      </h3>
     </slide>
     <slide class="hooper-slides__hooper text-center border rounded py-1 text-break" id="answerText">
       <h3 >
@@ -69,8 +71,11 @@ export default {
 <style lang="scss">
   .hooper-slides {
     text-align: center;
+    color: white;
+    background: #1D809F;
     &__hooper {
-          background-color: #d5d5d5;
+          background-color: #fff;
+          color: black;
     }
     &__slide {
       display: flex;

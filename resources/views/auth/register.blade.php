@@ -1,16 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
+<div class="d-flex align-items-center signup bg-primary text-white">
     <div class="container">
-    　<p class="h1 text-center">ユーザー登録</p>
-        <div class="card bg-white mb-3">
-            <!-- <div class="text-center card-header text-white bg-primary mb-3">
-                <h3>ユーザー登録</h3>
-            </div> -->
-        
-            <div class="card-body row">
-                <div class="col-sm-6 offset-sm-3 text-center">
-        
+    <h2 class="mb-4 text-center">ユーザー登録</h2>
+
+            <div class="text-center col-sm-6 offset-sm-3">
+
                     {!! Form::open(['route' => 'signup.post']) !!}
                         <div class="form-group">
                             {{-- {!! Form::label('name', 'Name') !!} --}}
@@ -32,14 +27,11 @@
                             {!! Form::password('password_confirmation', ['class' => 'form-control','placeholder'=>'Confirmation']) !!}
                         </div>
                         <div >
-                            {!! Form::submit('登録', ['class' => 'btn btn-dark btn-block btn-sm']) !!}
+                            {!! Form::submit('登録', ['class' => 'btn btn-dark btn-xl']) !!}
                      {!! Form::close() !!}
-                            <button type="button" class='btn btn-light btn-sm px-3' onclick="history.back()">戻る</button>
+                            <button type="button" class='btn btn-light btn-sm px-2' onclick="history.back()">戻る</button>
                         </div>
                 </div>
             </div>
-            <!-- <div class="row offset-3 mt-3"> -->
-
-        </div>    
     </div>
 @endsection

@@ -24,6 +24,8 @@ class WordbooksController extends Controller
             // ユーザの投稿の一覧を作成日時の降順で取得
             $wordbooks = $user->feed_wordbooks()->orderBy('created_at', 'desc')->paginate(10);
             
+            $num = 1;
+
             $data = [
                 'user' => $user,
                 'wordbooks' => $wordbooks,

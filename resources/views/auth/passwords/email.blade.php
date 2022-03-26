@@ -1,37 +1,24 @@
 @extends('layouts.app')
-
-
 @section('content')
+<div class="d-flex align-items-center passreset bg-primary text-white">
   <div class="container">
-    <div class="row">
-      <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
-        <h1 class="text-center"><a class="text-dark" href="/">パスワード再設定</a></h1>
-        <div class="card mt-3">
-          <div class="card-body text-center">
-
-            @if (session('status'))
-              <div class="card-text alert alert-success">
-                {{ session('status') }}
-              </div>
-            @endif
-            
-            <div class="card-text">
-              <form method="POST" action="{{ route('password.email') }}">
-                @csrf
-
-                <div class="md-form">
-                  <label for="email">メールアドレス</label>
-                  <input class="form-control" type="text" id="email" name="email" required>
-                </div>
-
-                <button class="btn btn-dark btn-block btn-sm" type="submit">メール送信</button>
-
-              </form>
-
-            </div>
-          </div>
+    <h2 class="mb-4 text-center">パスワード再設定</h2>
+    <div class="text-center col-sm-6 offset-sm-3">
+      @if (session('status'))
+        <div class="card-text alert alert-success">
+          {{ session('status') }}
         </div>
-      </div>
+      @endif  
+        <form method="POST" action="{{ route('password.email') }}">
+          @csrf
+          <div class="md-form mb-3">
+            <input class="form-control" type="text" id="email" name="email" placeholder="メールアドレス" required>
+          </div>
+          <div>
+            <button class="btn btn-dark btn-xl" type="submit">メール送信</button>
+          </div>
+        </form>
     </div>
   </div>
+</div>
 @endsection

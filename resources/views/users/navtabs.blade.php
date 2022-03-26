@@ -6,7 +6,7 @@
         <a href="{{ route('users.show', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
             単語帳
             <div>
-                <span class="badge badge-dark">{{ $user->wordbooks_count }}</span>
+                <span class="badge">{{ $user->wordbooks_count }}</span>
             </div>
         </a>
     </li>
@@ -15,7 +15,7 @@
         <a href="{{ route('users.followings', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.followings') ? 'active' : '' }}">
             フォロー
             <div>
-                <span class="badge badge-dark">{{ $user->followings_count }}</span>
+                <span class="badge">{{ $user->followings_count }}</span>
             </div>
         </a>
     </li>
@@ -24,7 +24,7 @@
         <a href="{{ route('users.followers', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.followers') ? 'active' : '' }}">
             フォロワー
             <div>
-                <span class="badge badge-dark">{{ $user->followers_count }}</span>
+                <span class="badge">{{ $user->followers_count }}</span>
             </div>
         </a>
     </li>
