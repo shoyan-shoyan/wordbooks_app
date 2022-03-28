@@ -37,7 +37,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">削除確認画面</h4></h4>
+                                                <h4 class="modal-title" id="myModalLabel">単語帳の削除</h4></h4>
                                             </div>
                                             <div class="modal-body">
                                                 <label>削除した単語帳は復旧できません。</br>本当に単語帳を削除しますか？</label>

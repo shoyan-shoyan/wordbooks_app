@@ -69,7 +69,7 @@
             <h2 class="mx-auto mb-5">
                 作成しましょう！
             </h2>
-            <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">作成</a>
+            {!! link_to_route('signup.get', '作成', null, ['class' => 'btn btn-primary btn-xl']) !!}
         </div>
     </section>
     <!-- Call to Action-->
