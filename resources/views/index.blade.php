@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
     <p class="h1 text-center mb-3">Home</p>
     <div class="container">
         <div class="row">
@@ -34,16 +37,25 @@
                             <a href="/all" class="btn_03"><i class="far fa-folder-open m-2"></i> <div class="d-none d-lg-block">全単語帳</div></a>
                         </div>
                     </div>
-                </div>
+                
 
-                <div class="d-none d-lg-block">
-                    <p class="text-black-50"><small>[新規作成]から単語帳を作成できます。</br>作成した単語帳に単語(問題と解答)を登録することで学習を開始できます。</small></p>
-                    <p class="text-black-50"><small>[全単語帳]では他のユーザが作成した単語帳すべてが閲覧できます。</small></p>
+                    <div class="d-none d-lg-block">
+                        <p class="text-black-50"><small>[新規作成]から単語帳を作成できます。</br>作成した単語帳に単語(問題と解答)を登録することで学習を開始できます。</small></p>
+                        <p class="text-black-50"><small>[全単語帳]では他のユーザが作成した単語帳すべてが閲覧できます。</small></p>
+                    </div>
+                    <p class="text-black-50"><small>ヘルプは</i><a herf="" class="text-primary" data-bs-target="#firststepModal" data-bs-toggle="modal">こちら</a></small></p>
                 </div>
             </div>
                 <div class="col-lg-1">
                 </div>
+
             <div class="col-lg-6">
+                    <div>
+                        @if ($wordbooks->isEmpty())
+                        <p>まだ単語帳がありません。</p>
+                        <p>使い方は<a herf="" class="text-primary" data-bs-target="#firststepModal" data-bs-toggle="modal">こちら</a></p>
+                        @endif
+                    </div>
                     <?php $num = 0 ?>
                     @foreach ($wordbooks as $wordbook)
                         <?php $num++ ?>
@@ -54,4 +66,24 @@
             </div>
         </div>
     </div>
+
+
+<!-- Modal マニュアル-->
+<div class="modal fade" id="firststepModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">ヘルプ</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        @include('manual.firststep')
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
