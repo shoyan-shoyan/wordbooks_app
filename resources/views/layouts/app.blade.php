@@ -19,7 +19,6 @@
 
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles_bootstrap.css') }}">
-        <!-- <link rel="stylesheet" href="{{ asset('css/modal_style.css') }}"> -->
     </head>
     <body id="page-top">
         @if (Auth::check())
@@ -58,6 +57,5 @@
 
         </div>
         <script src="{{ asset('/js/accept_check.js') }}"></script>
-        <!-- <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script> -->
     </body>
 </html>

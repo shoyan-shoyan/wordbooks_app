@@ -60,5 +60,4 @@ Route::prefix('wordbook')->name('wordbook.')->group(function () {
 });
 
 
-// Route::view('/wordbook_registration', 'wordbook_registration');
 Route::get('word/{id}', 'WordsController@index')->name('word.index');

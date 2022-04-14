@@ -3,8 +3,6 @@
         <h3 class="card-title">{{ $user->name }}</h3>
     </div>
     <div class="card-body">
-
-        <!-- <img src="/storage/images/{{$img_name}}"> -->
         <img src="{{$img_name}}" width="200" height="200">
         <!-- 自己紹介文の表示 -->
         <div>

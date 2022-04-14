@@ -44,7 +44,6 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">閉じる</button>
-                                                <!-- <button type="button" class="btn btn-danger">削除</button> -->
                                                 {!! Form::open(['route' => ['wordbooks.destroy', $wordbook->id], 'method' => 'delete']) !!}
                                                     {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
                                                 {!! Form::close() !!}
@@ -87,7 +86,6 @@
     <div class="m-3">
         <p class="h5 text-center mb-3">単語一覧</p>
         <ul class="list-group wordlist">
-            <!-- <li class="list-group-item">単語一覧</li> -->
 
                 @foreach($wordbook->words as $word)
                     <li class="wordlistitem">{{ $word->content }}</li>

@@ -19,7 +19,6 @@
                     </div>      
 
                 {{-- 他の単語一覧 --}}
-                <!-- <div class="container"> -->
                     <div class="row d-flex justify-content-between">
                         @foreach ($words as $word)
                         <div class="col-8">

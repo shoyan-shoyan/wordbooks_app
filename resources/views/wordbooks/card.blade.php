@@ -1,6 +1,4 @@
 <div class="container px-4 px-lg-1">
-    <!-- <div class="row gx-0"> -->
-        <!-- <div class="col-lg-8"> -->
             <div class="portfolio-item mb-3" href="#!">
                 <div class="caption">
                     <div class="caption-content">
@@ -80,6 +78,4 @@
                             @break
                     @endswitch
             </div>
-        <!-- </div> -->
-    <!-- </div> -->
 </div>

@@ -12,7 +12,6 @@
               <input type="text" name="keyword" value="{{$keyword}}" class="form-control" placeholder="ユーザ検索">
             </div>
             <div>
-            <!-- <input type="submit" value="検索" class="btn btn-dark btn-sm mr-1"> -->
               <a href="#" class="btn_03 btn-sm mr-1" onclick="document.a_form.submit();"><i class="fa fa-search m-2"></i>検索</a>
             </div>
           </form>

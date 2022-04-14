@@ -74,17 +74,12 @@
     </section>
     <!-- Call to Action-->
     <section class="content-section bg-primary text-white" id="login">
-        <!-- <div class="container px-4 px-lg-5 text-center"> -->
             <h2 class="mb-4 text-center">ログイン</h2>
-            <!-- <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a> -->
-            <!-- <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a> -->
-        <!-- </div> -->
+
 
 
 
         <div class="container">
-            <!-- <div class="login card light mt-5"> -->
-                <!-- <div class="card-body row"> -->
                     <div class="text-center col-sm-6 offset-sm-3">
                         {!! Form::open(['route' => 'login.post']) !!}
                         <form method="" action="">
@@ -99,55 +94,12 @@
                             </div>
                         {!! Form::close() !!}
                         </form>
-                        <!-- <div> -->
-                            <!-- <a href="" class="mt-2 text-center font-small text-white">パスワードを忘れた方</a> -->
-                            <!-- <p class="mt-2 text-center font-small ">パスワードを忘れた方 <a href="" class="text-dark">こちらから</a></p> -->
-                        <!-- </div> -->
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
-            <!-- {{-- ユーザ登録ページへのリンク --}} -->
 
-            <!-- <p class="mt-2 text-muted text-center font-small">新規会員登録は{!! link_to_route('signup.get', 'こちらから', null, ['class' => 'text-dark']) !!}</p> -->
                                             <p class="mt-2 text-center font-small ">パスワードを忘れた方 <a href="{{ route('password.request') }}" class="text-dark">こちらから</a></p>
             <p class="mt-2 text-center font-small ">新規会員登録は {!! link_to_route('signup.get', 'こちらから', null, ['class' => 'text-dark']) !!}</p>
         </div>
     </section>
 
-
-
-    <!-- <div class="container">
-        <div class="login card light mt-5">    
-            <div class="card-body row">
-                <div class="text-center col-sm-6 offset-sm-3">
-        
-                    {!! Form::open(['route' => 'login.post']) !!}
-                        <div class="form-group ">
-
-                            {!! Form::email('email', null, ['class' => 'form-control','placeholder'=>'Email']) !!}
-                        </div>
-        
-                        <div class="form-group">
-
-                            {!! Form::password('password', ['class' => 'form-control','placeholder'=>'password']) !!}
-                        </div> -->
-                        <!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
-                        <!-- <div >
-                            {!! Form::submit('ログイン', ['class' => 'btn btn-dark btn-block btn-sm']) !!}
-                        </div>
-
-                    {!! Form::close() !!}
-
-                    <div>
-                        <a href="{{ route('password.request') }}" class="card-text">パスワードを忘れた方</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-    
-        {{-- ユーザ登録ページへのリンク --}}
-        <!-- <p class="mt-2 text-muted text-center font-small">新規会員登録は {!! link_to_route('signup.get', 'こちらから', null, ['class' => 'text-dark']) !!}</p>
-    </div> -->
 @endsection
 
