@@ -4,7 +4,7 @@
             <div class="card wordbook-card">
                 <div class="card-body">
                     <h4 class="card-title"><i class="far fa-file-alt fa-fw"></i> {!! nl2br(e($wordbook->bookname)) !!}</h4>
-                    <p class="card-text small my-0">作成者：{!! link_to_route('users.show', $wordbook->user->name, ['user' => $wordbook->user->id],['class'=>'text-white']) !!}</p>
+                    <p class="card-text small my-0">作成者：{!! link_to_route('users.show', $wordbook->user->name, ['user' => $wordbook->user->id],['class'=>'text-primary']) !!}</p>
                     <p class="card-text small ">posted at {{ $wordbook->created_at }}</p>
                     <p class="card-text small mt-0">単語数： {{ $count = \App\Word::where('wordbook_id', $wordbook->id)->count() }}</p>
 
@@ -72,7 +72,7 @@
                     <div class="card-body pt-0 pb-4 pl-3">
                         <div class="card-text line-height">
                 @endif
-                    <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border border-white p-1 mr-1 mt-1 text-white">
+                    <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border border-dark p-1 mr-1 mt-1 text-black">
                         {{ $tag->hashtag }}
                     </a>
                 @if($loop->last)

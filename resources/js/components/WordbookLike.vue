@@ -70,7 +70,7 @@
 
 <style lang="scss">
 .fa-heart {
-   color: #fff;
+   color: rgb(112, 112, 112);
 }
 .red-text {
  color: #e54747;
