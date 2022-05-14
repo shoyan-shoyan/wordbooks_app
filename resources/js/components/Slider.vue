@@ -14,7 +14,7 @@
       </h3>
     </slide>
     <slide class="hooper-slides__hooper text-center border rounded py-1 text-break" id="answerText">
-      <h3 >
+      <h3>
             {{ aText }}
       </h3>
     </slide>
@@ -81,6 +81,9 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    h3 {
+      white-space: pre-line;
     }
   }
 </style>

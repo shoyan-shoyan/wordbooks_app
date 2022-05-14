@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         @if(empty($message))
@@ -7,12 +6,12 @@
             <div>
                 <div class="card tborder border-dark mt-3 mb-3">
                     <div class="card-body">
-                        <h1 class="text-center">{{ $mondai }}</h1>
+                        <h1 class="text-center">{!! nl2br(htmlspecialchars($mondai)) !!}</h1>
                     </div>
                 </div>                
                 <div class="my-2 mb-3">
                     <slider 
-                        v-bind:answer-text='@json( $answer )'
+                        v-bind:answer-text='@json( htmlspecialchars($answer)  )'
                         next-quiz="{{ route('learning.next', ['id' => $id,  'count' => $count, 'quizu_index' => $quizu_index]) }}"       
                         >
                     </slider>
