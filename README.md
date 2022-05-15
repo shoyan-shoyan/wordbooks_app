@@ -56,19 +56,19 @@ HOME画面からは自身で作成した単語帳やフォローした他のユ�
 Webサービスの性質上、外で使うことが多いと思われるため、スマホ表示にも対応しています。
 
 ## 使用技術
-- HTML  
-- CSS  
-JavaScript  
-Bootstrap 5.1.3  
-Vue.js 2.6.14 ※  
-PHP 7.3.29  
-Laravel 6.20.28  
-MySQL 5.7.29  
-git 2.24.3  
-MailHog(開発環境)/SendGrid(本番環境)  
-VSCode  
+* HTML  
+* CSS  
+* JavaScript  
+* Bootstrap 5.1.3  
+* Vue.js 2.6.14 ※  
+* PHP 7.3.29  
+* Laravel 6.20.28  
+* MySQL 5.7.29  
+* git 2.24.3  
+* MailHog(開発環境)/SendGrid(本番環境)  
+* VSCode  
 
-※ Vue.jsはタグ、プロフィール設定の画像アップロード、学習画面の解答スライド表示、いいね（お気に入り）機能で利用しています。
+※Vue.jsはタグ、プロフィール設定の画像アップロード、学習画面の解答スライド表示、いいね（お気に入り）機能で利用しています。
 
 ## DB設計
 
