@@ -1,11 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+![tancheru](tansheru_top.jpg)
 
 ## Webサービスの紹介
 単語帳を作って学習ができるオリジナルWebサービス 「タンシェル」：  
@@ -22,15 +15,19 @@ https://www.tansheru.com/
 そのため、Webサービスの名前は「単語（帳）をつくる」、「共有（シェア）する」で「タンシェル」としました。
 
 ## HOME画面
-HOME画面からは自身で作成した単語帳やフォローした他のユーザの単語帳が並ぶようになっています。他のユーザの単語帳はそのユーザをフォローすることでHOME画面に表示されます。
+HOME画面からは自身で作成した単語帳やフォローした他のユーザの単語帳が並ぶようになっています。他のユーザの単語帳はそのユーザをフォローすることでHOME画面に表示されます。  
+![home](tansheru_image01.jpg)
 
 ## 学習画面
 登録した単語と答えを上下に分けて表示しています。  
 解答を確認する際は左へスライドします。  
 
+![learning](tansheru_image02.jpg)
+
 解答の表示方法は少し悩みましたが、スライド表示にしました。  
 当初はクリックでパッと解答が見れるようにしていましたが、実際の単語帳を使用する際は、ちょっとめくったり、解答の頭文字だけ見たりとかすると思うので、できるだけそういった使い方に近い動作にしたかったというのが理由です。
 
+![learninggif](tansheru_learning.gif)
 
 ## 機能一覧
 * 単語帳/単語 登録  
@@ -54,6 +51,7 @@ HOME画面からは自身で作成した単語帳やフォローした他のユ�
 
 レスポンシブ対応  
 Webサービスの性質上、外で使うことが多いと思われるため、スマホ表示にも対応しています。
+![responsive](tansheru_image03.jpg)
 
 ## 使用技術
 * HTML  
@@ -71,37 +69,8 @@ Webサービスの性質上、外で使うことが多いと思われるため�
 ※Vue.jsはタグ、プロフィール設定の画像アップロード、学習画面の解答スライド表示、いいね（お気に入り）機能で利用しています。
 
 ## DB設計
+![er](tansheru_er.jpg)
 
-テーブル一覧
+テーブル一覧  
+![er](tansheru_table.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
