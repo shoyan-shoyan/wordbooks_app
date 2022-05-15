@@ -7,27 +7,53 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Webサービスの紹介
+単語帳を作って学習ができるオリジナルWebサービス 「タンシェル」：  
+https://www.tansheru.com/
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+単語帳（暗記カード）は学生時代などに使用されたことがある人多いかと思います。  
+英単語などを書き留めて、ペラペラめくって学習するツールです。  
+この単語帳をパソコンやスマホ、タブレットからいつでも作成・学習するためのWebサービスとなります。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+また、特徴として他のユーザと単語帳が共有できます。  
+単語帳は、学校のテスト、試験が終わると用が無くなって破棄するだけになります。  
+しかし、他に必要な人、欲しい人が必ずいるので、共有して使えるようにしてはどうかと思いました。  
+単語帳自体のWebサービス、アプリは色々ありますが、「共有する」という特徴を持たせました。  
+そのため、Webサービスの名前は「単語（帳）をつくる」、「共有（シェア）する」で「タンシェル」としました。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## HOME画面
+HOME画面からは自身で作成した単語帳やフォローした他のユーザの単語帳が並ぶようになっています。他のユーザの単語帳はそのユーザをフォローすることでHOME画面に表示されます。
 
-## Learning Laravel
+## 学習画面
+登録した単語と答えを上下に分けて表示しています。  
+解答を確認する際は左へスライドします。  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+解答の表示方法は少し悩みましたが、スライド表示にしました。  
+当初はクリックでパッと解答が見れるようにしていましたが、実際の単語帳を使用する際は、ちょっとめくったり、解答の頭文字だけ見たりとかすると思うので、できるだけそういった使い方に近い動作にしたかったというのが理由です。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## 機能一覧
+・単語帳/単語 登録  
+・単語帳/単語 管理機能  
+　-編集  
+　-削除  
+・単語帳学習機能  
+　-登録順出題  
+　-ランダム出題  
+・いいね機能  
+　-いいね（お気に入り）登録/削除  
+　-いいね（お気に入り）一覧表示  
+・タグ機能  
+　–タグ登録/削除  
+　–同一タグの単語帳表示  
+・ユーザ機能  
+　-ユーザ登録、ログイン、ログアウト  
+　-他ユーザのフォロー／アンフォロー  
+　-パスワード再設定  
+　-プロフィール設定（画像アップロード）  
+
+レスポンシブ対応  
+Webサービスの性質上、外で使うことが多いと思われるため、スマホ表示にも対応しています。
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
