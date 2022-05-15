@@ -33,27 +33,46 @@ HOME画面からは自身で作成した単語帳やフォローした他のユ�
 
 
 ## 機能一覧
-・単語帳/単語 登録  
-・単語帳/単語 管理機能  
-　-編集  
-　-削除  
-・単語帳学習機能  
-　-登録順出題  
-　-ランダム出題  
-・いいね機能  
-　-いいね（お気に入り）登録/削除  
-　-いいね（お気に入り）一覧表示  
-・タグ機能  
-　–タグ登録/削除  
-　–同一タグの単語帳表示  
-・ユーザ機能  
-　-ユーザ登録、ログイン、ログアウト  
-　-他ユーザのフォロー／アンフォロー  
-　-パスワード再設定  
-　-プロフィール設定（画像アップロード）  
+* 単語帳/単語 登録  
+* 単語帳/単語 管理機能  
+  * 編集  
+  * 削除  
+* 単語帳学習機能  
+  * 登録順出題  
+  * ランダム出題  
+* いいね機能  
+  * いいね（お気に入り）登録/削除  
+  * いいね（お気に入り）一覧表示  
+* タグ機能  
+  * タグ登録/削除  
+  * 同一タグの単語帳表示  
+* ユーザ機能  
+  * ユーザ登録、ログイン、ログアウト  
+  * 他ユーザのフォロー／アンフォロー  
+  * パスワード再設定  
+  * プロフィール設定（画像アップロード）  
 
 レスポンシブ対応  
 Webサービスの性質上、外で使うことが多いと思われるため、スマホ表示にも対応しています。
+
+## 使用技術
+- HTML  
+- CSS  
+JavaScript  
+Bootstrap 5.1.3  
+Vue.js 2.6.14 ※  
+PHP 7.3.29  
+Laravel 6.20.28  
+MySQL 5.7.29  
+git 2.24.3  
+MailHog(開発環境)/SendGrid(本番環境)  
+VSCode  
+
+※ Vue.jsはタグ、プロフィール設定の画像アップロード、学習画面の解答スライド表示、いいね（お気に入り）機能で利用しています。
+
+## DB設計
+
+テーブル一覧
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
@@ -86,19 +105,3 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - [Hyper Host](https://hyper.host)
 - [Appoly](https://www.appoly.co.uk)
 - [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
